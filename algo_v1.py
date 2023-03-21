@@ -10,6 +10,11 @@ class Trader:
             if product == "PEARLS":
                 pass
             elif product == "BANANAS":
-                pass
+                # init lists
+                order_depth: OrderDepth = state.order_depths[product]
+                banana_orderrs: list[Order] = []
+
+                # check whether to ask or bid first based on volume
+                # to be implemented?
 
         return result
