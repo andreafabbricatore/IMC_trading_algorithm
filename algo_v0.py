@@ -12,14 +12,7 @@ class Trader:
 
         result = {}
         if len(state.own_trades) == 0:
-            print("LISTING\n\n")
-            print(state.listings)
-            print("OWN TRADES\n\n")
-            print(state.own_trades)
-            print("ORDER DEPTHS\n\n")
-            print(state.order_depths)
-            print("MARKET TRADES\n\n")
-            print(state.market_trades)
+
             # Iterate over all the keys (the available products) contained in the order depths
             for product in state.order_depths.keys():
                 # Check if the current product is the 'PEARLS' product, only then run the order logic
