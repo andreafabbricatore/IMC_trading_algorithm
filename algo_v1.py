@@ -21,45 +21,9 @@ class Trader:
                 # check whether to ask or bid first based on volume
                 # to be implemented?
 
-                # getting ask, bid prices
-                try:
-                    if state.position[product] == 0:
-                        best_ask = min(order_depth.sell_orders.keys())
-                        best_bid = max(order_depth.buy_orders.keys())
+                pearl_orders.append(Order(product, 10001, -40))
+                pearl_orders.append(Order(product, 9999, 40))
 
-                        # if best_bid < best_ask go
-
-                        if best_bid < best_ask:
-                            price_change = (best_ask - best_bid) / 8
-                            qty = min(
-                                abs(order_depth.sell_orders[best_ask]),
-                                abs(order_depth.buy_orders[best_bid]),
-                            )
-                            our_bid = best_bid + price_change
-                            our_ask = best_ask - price_change
-
-                            pearl_orders.append(Order(product, our_bid, qty))
-                            pearl_orders.append(Order(product, our_ask, -qty))
-
-                            result[product] = pearl_orders
-                except:
-                    best_ask = min(order_depth.sell_orders.keys())
-                    best_bid = max(order_depth.buy_orders.keys())
-
-                    # if best_bid < best_ask go
-
-                    if best_bid < best_ask:
-                        qty = min(
-                            abs(order_depth.sell_orders[best_ask]),
-                            abs(order_depth.buy_orders[best_bid]),
-                        )
-                        price_change = (best_ask - best_bid) / 8
-                        our_bid = best_bid + price_change
-                        our_ask = best_ask - price_change
-
-                        pearl_orders.append(Order(product, our_bid, qty))
-                        pearl_orders.append(Order(product, our_ask, -qty))
-
-                        result[product] = pearl_orders
+                result[product] = pearl_orders
 
         return result
